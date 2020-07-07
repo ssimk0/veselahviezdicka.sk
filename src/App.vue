@@ -1,12 +1,66 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <b-container fluid="true" id="home">
+      <b-container>
+        <b-row class="text-left">
+          <b-col>
+            <div>
+              <i class="h2 ml-4 mt-4 fas fa-leaf"></i>
+            </div>
+            <div>
+              <span>Jedalnicek</span>
+            </div>
+          </b-col>
+          <b-col class="text-right">
+            <i class="fab fa-facebook-square  h2 mt-4 mb-4 mr-4"></i>
+          </b-col>
+        </b-row>
+        <b-navbar toggleable="sm" type="dark" variant="info" justified="true"
+                  class="rounded">
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+          <b-navbar-brand>BootstrapVue</b-navbar-brand>
+
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+              <b-nav-item :href="`/pages/${page.slug}`" :key="page.id" v-for="page in pages[slug]">
+                {{page.title}}
+              </b-nav-item>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
+        <b-col>
+          <router-view/>
+        </b-col>
+      </b-container>
+    </b-container>
   </div>
 </template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+  mounted() {
+    this.getPagesByCategorySlug(this.slug)
+      .then(() => {
+        console.log(this.pages);
+      });
+  },
+  data() {
+    return {
+      slug: 'menu',
+    };
+  },
+  methods: {
+    ...mapActions(['getPagesByCategorySlug']),
+  },
+  computed: {
+    ...mapGetters(['pages']),
+  },
+};
+
+</script>
 
 <style lang="scss">
 #app {
