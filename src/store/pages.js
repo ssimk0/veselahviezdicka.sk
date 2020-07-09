@@ -14,7 +14,6 @@ const actions = {
   getPagesByCategorySlug({ commit }, slug) {
     return pages.list(slug)
       .then((response) => {
-        console.log(response);
         commit(SET_PAGES, {
           slug,
           data: response.data,

@@ -15,16 +15,21 @@
             <i class="fab fa-facebook-square  h2 mt-4 mb-4 mr-4"></i>
           </b-col>
         </b-row>
-        <b-navbar toggleable="sm" type="dark" variant="info" justified="true"
+        <b-navbar toggleable="sm" type="dark" variant="dark" justified="true"
                   class="rounded">
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-          <b-navbar-brand>BootstrapVue</b-navbar-brand>
+          <b-navbar-brand>Vesela Hviezdicka</b-navbar-brand>
 
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-              <b-nav-item :href="`/pages/${page.slug}`" :key="page.id" v-for="page in pages[slug]">
-                {{page.title}}
+              <b-nav-item :href="`/page/menu/${page.slug}`"
+                          :key="page.id"
+                          v-for="page in pages[slug]">
+                {{ page.title }}
+              </b-nav-item>
+              <b-nav-item href="/contact">
+                Kontakt
               </b-nav-item>
             </b-navbar-nav>
           </b-collapse>
@@ -41,10 +46,10 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  mounted() {
+  beforeRouteEnter(to, from, next) {
     this.getPagesByCategorySlug(this.slug)
       .then(() => {
-        console.log(this.pages);
+        next();
       });
   },
   data() {
