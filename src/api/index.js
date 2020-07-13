@@ -1,17 +1,15 @@
 import axios from 'axios';
-import NProgress from 'nprogress';
+// import NProgress from 'nprogress';
 import ROUTER_NAMES from '@/constants/routes';
 import store from '../store';
 import router from '../router';
 
 export default function setup() {
   axios.interceptors.response.use(
-    (response) => {
-      NProgress.done();
-      return response;
-    },
+    (response) => response,
+    //   NProgress.done();
     (error) => {
-      NProgress.done();
+    //   NProgress.done();
       // handle error
       store.commit('setError', {
         error: 'error',
@@ -41,10 +39,7 @@ export default function setup() {
     },
   );
   // before a request is made start the nprogress
-  axios.interceptors.request.use((config) => {
-    NProgress.start();
-    return config;
-  });
+  axios.interceptors.request.use((config) => config);
 
   let token = store.state.user.token ? store.state.user.token : null;
 

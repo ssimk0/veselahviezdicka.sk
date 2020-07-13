@@ -17,6 +17,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Page.vue'),
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+  },
+  {
     path: '/contact',
     name: 'Contact',
     component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue'),
@@ -29,7 +34,7 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeResolve((to, from, next) => {
+router.beforeEach((to, from, next) => {
   // If this isn't an initial page load.
   if (to.name) {
     // Start the route progress bar.

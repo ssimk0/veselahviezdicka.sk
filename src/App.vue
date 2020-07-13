@@ -47,10 +47,10 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   beforeRouteEnter(to, from, next) {
-    this.getPagesByCategorySlug(this.slug)
-      .then(() => {
-        next();
-      });
+    console.log(this.slug);
+    next((vm) => {
+      vm.getPagesByCategorySlug(this.slug);
+    });
   },
   data() {
     return {
