@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import { ValidationProvider } from 'vee-validate';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import VueI18n from 'vue-i18n';
 import App from './App.vue';
 import router from './router';
@@ -13,6 +13,7 @@ import sk from './assets/lang/sk';
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.use(VueI18n);
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 // import NProgress from 'nprogress';
 import ROUTER_NAMES from '@/constants/routes';
 import store from '../store';
+import { SET_TOKEN, SET_INFO } from '../store/user';
 import router from '../router';
 
 export default function setup() {
@@ -16,10 +17,8 @@ export default function setup() {
       });
 
       if (error.response && (error.response.status === 401 || error.response.status === 403) && error.request.responseURL.indexOf('api/auth/login') === -1) {
-        store.commit('setToken', {
-          accessToken: null,
-        });
-        store.commit('setInfo', {});
+        store.commit(SET_TOKEN, null);
+        store.commit(SET_INFO, {});
         router.push({
           name: ROUTER_NAMES.LOGIN,
           query: { error: 'expired' },

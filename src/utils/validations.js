@@ -1,22 +1,19 @@
 import { extend } from 'vee-validate';
+import { required, email, min } from 'vee-validate/dist/rules';
 
 export default (i18n) => {
   extend('required', {
-    validate(value) {
-      return {
-        required: true,
-        valid: ['', null, undefined].indexOf(value) === -1,
-      };
-    },
+    ...required,
     message: i18n.t('validations.required'),
-    computesRequired: true,
+  });
+
+  extend('email', {
+    ...email,
+    message: i18n.t('validations.email'),
   });
 
   extend('min', {
-    validate(value, { length }) {
-      return value.length >= length;
-    },
-    params: ['length'],
+    ...min,
     message: i18n.t('validations.min'),
   });
 };

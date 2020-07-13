@@ -1,7 +1,12 @@
+import user from '@/api/user';
+
 const state = {
   info: {},
   token: '',
 };
+
+export const SET_TOKEN = 'SET_TOKEN';
+export const SET_INFO = 'SET_INFO';
 
 const getters = {
   user(s) {
@@ -13,9 +18,11 @@ const getters = {
 };
 
 const actions = {
-  // login({ commit }, args) {
-  //
-  // },
+  login({ commit }, args) {
+    user.login(args).then((response) => {
+      commit(SET_TOKEN, response.data.token);
+    });
+  },
   // userInfo({ commit }, args) {
   //
   // },
@@ -32,10 +39,10 @@ const actions = {
 };
 
 const mutations = {
-  setToken(s, data) {
-    s.token = data.accessToken;
+  [SET_TOKEN](s, token) {
+    s.token = token;
   },
-  setInfo(s, userInfo) {
+  [SET_INFO](s, userInfo) {
     s.info = userInfo;
   },
 };
