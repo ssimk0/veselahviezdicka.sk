@@ -41,6 +41,7 @@ const actions = {
 const mutations = {
   [SET_TOKEN](s, token) {
     s.token = token;
+    localStorage.setItem('token', token);
   },
   [SET_INFO](s, userInfo) {
     s.info = userInfo;

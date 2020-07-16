@@ -8,7 +8,7 @@
               <i class="h2 ml-4 mt-4 fas fa-leaf"></i>
             </div>
             <div>
-              <span>Jedalnicek</span>
+              <span>{{$t('navigation.dinningMenu')}}</span>
             </div>
           </b-col>
           <b-col class="text-right">
@@ -19,7 +19,7 @@
                   class="rounded">
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-          <b-navbar-brand>Vesela Hviezdicka</b-navbar-brand>
+          <b-navbar-brand>{{$t('brandName')}}</b-navbar-brand>
 
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
@@ -29,7 +29,7 @@
                 {{ page.title }}
               </b-nav-item>
               <b-nav-item href="/contact">
-                Kontakt
+                {{$t('navigation.contact')}}
               </b-nav-item>
             </b-navbar-nav>
           </b-collapse>
@@ -46,11 +46,8 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  beforeRouteEnter(to, from, next) {
-    console.log(this.slug);
-    next((vm) => {
-      vm.getPagesByCategorySlug(this.slug);
-    });
+  mounted() {
+    this.getPagesByCategorySlug(this.slug);
   },
   data() {
     return {

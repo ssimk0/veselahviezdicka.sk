@@ -1,30 +1,43 @@
 import Vue from 'vue';
 import NProgress from 'nprogress';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '@/views/Home.vue';
+import r from '@/constants/routes';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: r.HOME,
     component: Home,
+    exact: true,
   },
   {
     path: '/page/:type/:slug',
-    name: 'Page',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Page.vue'),
+    name: r.PAGE,
+    component: () => import('@/views/Page.vue'),
   },
   {
     path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+    name: r.LOGIN,
+    component: () => import('@/views/Login.vue'),
+  },
+  {
+    path: '/forgot-password',
+    name: r.FORGOT_PASSWORD,
+    component: () => import('@/views/ForgotPassword'),
+
   },
   {
     path: '/contact',
-    name: 'Contact',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue'),
+    name: r.CONTACT,
+    component: () => import('@/views/Contact.vue'),
+  },
+  {
+    path: '/error',
+    name: r.ERROR,
+    component: () => import('@/views/Error'),
   },
 ];
 

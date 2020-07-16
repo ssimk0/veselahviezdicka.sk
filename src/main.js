@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Toasted from 'vue-toasted';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import VueI18n from 'vue-i18n';
@@ -16,6 +17,10 @@ Vue.use(IconsPlugin);
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.use(VueI18n);
+Vue.use(Toasted, {
+  duration: 5000,
+  iconPack: 'fontawesome',
+});
 
 localStorageBackwardCompatibilityInit();
 apiSetup();

@@ -14,3 +14,7 @@ $fa-font-path:        "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
+.toasted-container.top-right {
+  top: 1%;
+  right: 1%;
+}

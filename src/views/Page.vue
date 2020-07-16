@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{page.title}}
+    {{ page.title }}
     <div v-html=page.body></div>
   </div>
 </template>
@@ -12,7 +12,6 @@ export default {
   name: 'Page',
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      console.log(to);
       vm.getPage({
         type: to.params.type,
         slug: to.params.slug,
@@ -28,7 +27,9 @@ export default {
   computed: {
     ...mapGetters(['details']),
     page() {
-      return this.details[this.$route.params.type][this.$route.params.slug];
+      return this.details[this.$route.params.type]
+        ? this.details[this.$route.params.type][this.$route.params.slug]
+        : {};
     },
   },
 };
