@@ -35,6 +35,7 @@
 
 <script>
 import r from '@/constants/routes';
+import apiSetup from '@/api';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -63,6 +64,7 @@ export default {
         password: this.password,
       })
         .then(() => {
+          apiSetup();
           this.$router.push({
             name: r.HOME,
           });

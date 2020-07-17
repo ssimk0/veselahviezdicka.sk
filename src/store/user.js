@@ -19,13 +19,16 @@ const getters = {
 
 const actions = {
   login({ commit }, args) {
-    user.login(args).then((response) => {
+    return user.login(args).then((response) => {
       commit(SET_TOKEN, response.data.token);
+      return response.data.token;
     });
   },
-  // userInfo({ commit }, args) {
-  //
-  // },
+  userInfo({ commit }) {
+    return user.userInfo().then((response) => {
+      commit(SET_INFO, response.data);
+    });
+  },
   // forgotPassword({ commit }, args) {
   //
   // },

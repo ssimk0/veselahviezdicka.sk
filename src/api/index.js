@@ -2,7 +2,7 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 import ROUTER_NAMES from '@/constants/routes';
 import store from '../store';
-import { SET_TOKEN, SET_INFO } from '../store/user';
+import { SET_INFO, SET_TOKEN } from '../store/user';
 import router from '../router';
 
 export default function setup() {
@@ -53,5 +53,6 @@ export default function setup() {
 
   if (token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    store.dispatch('userInfo');
   }
 }

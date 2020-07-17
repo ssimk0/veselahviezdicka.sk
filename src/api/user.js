@@ -13,4 +13,7 @@ export default {
     const { email } = data;
     return axios.post('/api/v1/auth/forgot-password', { email });
   },
+  userInfo() {
+    return axios.get('/api/v1/auth/user');
+  },
 };
