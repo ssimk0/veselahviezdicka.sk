@@ -20,6 +20,19 @@ export default {
       success: 'Email s inštrukciami bol odoslaný na váš email',
     },
   },
+  resetPassword: {
+    buttons: {
+      confirm: 'Zmeniť',
+    },
+    labels: {
+      Password: 'Heslo',
+      ConfirmPassword: 'Potvrdenie Hesla',
+    },
+    messages: {
+      success: 'Heslo bolo uspešne zmenené možete pokračovat prihlasením',
+      expired: 'Formulár na zmenu hesla už expiroval skuste to znova',
+    },
+  },
   login: {
     buttons: {
       confirm: 'Prihlásiť',

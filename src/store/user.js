@@ -29,14 +29,6 @@ const actions = {
       commit(SET_INFO, response.data);
     });
   },
-  // forgotPassword({ commit }, args) {
-  //
-  // },
-  // resetPassword({ commit }, args) {
-  //
-  // },
-  // changePassword({ commit }, args) {
-  // },
   // editUserProfile({ commit }, args) {
   // },
 };

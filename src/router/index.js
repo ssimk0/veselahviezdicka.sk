@@ -27,7 +27,11 @@ const routes = [
     path: '/forgot-password',
     name: r.FORGOT_PASSWORD,
     component: () => import('@/views/ForgotPassword'),
-
+  },
+  {
+    path: '/reset-password',
+    name: r.RESET_PASSWORD,
+    component: () => import('@/views/ResetPassword'),
   },
   {
     path: '/contact',
