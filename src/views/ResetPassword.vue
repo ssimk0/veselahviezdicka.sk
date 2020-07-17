@@ -38,8 +38,14 @@ import routes from '@/constants/routes';
 
 export default {
   name: 'ResetPassword',
+  beforeRouteEnter(to, from, next) {
+    if (to.query.token) {
+      next();
+    } else {
+      next('/');
+    }
+  },
   data() {
-    console.log(this.$route.query.token);
     return {
       password: '',
       confirm: '',

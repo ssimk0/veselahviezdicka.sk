@@ -8,7 +8,7 @@
               <i class="h2 ml-4 mt-4 fas fa-leaf"></i>
             </div>
             <div>
-              <span>{{$t('navigation.dinningMenu')}}</span>
+              <span>{{ $t('navigation.dinningMenu') }}</span>
             </div>
           </b-col>
           <b-col class="text-right">
@@ -18,19 +18,21 @@
         <b-navbar toggleable="sm" type="dark" variant="dark" justified="true"
                   class="rounded">
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-          <b-navbar-brand>{{$t('brandName')}}</b-navbar-brand>
-
+          <router-link to="/">
+            <b-navbar-brand>{{ $t('brandName') }}</b-navbar-brand>
+          </router-link>
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-              <b-nav-item :href="`/page/menu/${page.slug}`"
-                          :key="page.id"
-                          v-for="page in pages[slug]">
-                {{ page.title }}
-              </b-nav-item>
-              <b-nav-item href="/contact">
-                {{$t('navigation.contact')}}
-              </b-nav-item>
+              <li class="nav-item" v-for="page in pages[slug]" :key="page.id">
+                <router-link :to="`/page/menu/${page.slug}`" class="nav-link">
+                  {{ page.title }}
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/contact" class="nav-link">
+                  {{ $t('navigation.contact') }}
+                </router-link>
+              </li>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>
@@ -63,26 +65,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
