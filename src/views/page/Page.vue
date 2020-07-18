@@ -1,6 +1,10 @@
 <template>
-  <div>
-    {{ page.title }}
+  <div class="pt-3">
+    <div v-if="user && (user.is_admin || user.can_edit)">
+      <router-link :to="`/page/${$route.params.type}/${$route.params.slug}/edit`"
+                   class="fas fa-pencil-alt float-right h3"></router-link>
+    </div>
+    <h3>{{ page.title }}</h3>
     <div v-html=page.body></div>
   </div>
 </template>
@@ -25,7 +29,7 @@ export default {
     ...mapActions(['getPage']),
   },
   computed: {
-    ...mapGetters(['details']),
+    ...mapGetters(['details', 'user']),
     page() {
       return this.details[this.$route.params.type]
         ? this.details[this.$route.params.type][this.$route.params.slug]

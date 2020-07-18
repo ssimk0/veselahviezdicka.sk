@@ -7,4 +7,11 @@ export default {
   list(slug) {
     return axios.get(`/api/v1/pages/${slug}`);
   },
+  update(data) {
+    const { id, title, body } = data;
+    return axios.put(`/api/v1/pages/${id}`, {
+      title,
+      body,
+    });
+  },
 };

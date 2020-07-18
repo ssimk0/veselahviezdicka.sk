@@ -20,6 +20,18 @@ export default {
       success: 'Email s inštrukciami bol odoslaný na váš email',
     },
   },
+  pageEdit: {
+    buttons: {
+      confirm: 'Uložiť',
+    },
+    labels: {
+      Body: 'Obsah',
+      Title: 'Titulok',
+    },
+    messages: {
+      success: 'Stránka sa podarila upraviť',
+    },
+  },
   resetPassword: {
     buttons: {
       confirm: 'Zmeniť',

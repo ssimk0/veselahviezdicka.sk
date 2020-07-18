@@ -3,6 +3,7 @@ import NProgress from 'nprogress';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 import r from '@/constants/routes';
+import routeChecks from '@/utils/routeChecks';
 
 Vue.use(VueRouter);
 
@@ -16,22 +17,39 @@ const routes = [
   {
     path: '/page/:type/:slug',
     name: r.PAGE,
-    component: () => import('@/views/Page.vue'),
+    component: () => import('@/views/page/Page.vue'),
+  },
+  {
+    path: '/page/:type/:slug/Edit',
+    name: r.PAGE_EDIT,
+    component: () => import('@/views/page/Edit.vue'),
+    beforeEnter: (to, from, next) => {
+      routeChecks.onlyEditor(next);
+    },
   },
   {
     path: '/login',
     name: r.LOGIN,
     component: () => import('@/views/Login.vue'),
+    beforeEnter: (to, from, next) => {
+      routeChecks.onlyNotLogged(next);
+    },
   },
   {
     path: '/forgot-password',
     name: r.FORGOT_PASSWORD,
     component: () => import('@/views/ForgotPassword'),
+    beforeEnter: (to, from, next) => {
+      routeChecks.onlyNotLogged(next);
+    },
   },
   {
     path: '/reset-password',
     name: r.RESET_PASSWORD,
     component: () => import('@/views/ResetPassword'),
+    beforeEnter: (to, from, next) => {
+      routeChecks.onlyNotLogged(next);
+    },
   },
   {
     path: '/contact',

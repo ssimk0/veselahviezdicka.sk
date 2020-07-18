@@ -2,7 +2,8 @@
   <div class="row justify-content-center align-items-center">
     <ValidationObserver v-slot="{ handleSubmit }" class="col-4 pt-5">
       <form @submit.prevent="handleSubmit(submit)">
-        <ValidationProvider v-slot="v" rules="required|min:3" name="Email" :debounce="300">
+        <ValidationProvider v-slot="v" rules="required|min:3"
+                            :name="$t('login.labels.Email')" :debounce="300">
           <b-form-group>
             <label>{{ $t('login.labels.Email') }}</label>
             <b-input v-model="email" type="email"></b-input>
@@ -11,7 +12,8 @@
             </div>
           </b-form-group>
         </ValidationProvider>
-        <ValidationProvider v-slot="v" rules="required|min:6" name="Heslo" :debounce="300">
+        <ValidationProvider v-slot="v" rules="required|min:6"
+                            :name="$t('login.labels.Password')" :debounce="300">
           <b-form-group>
             <label>{{ $t('login.labels.Password') }}</label>
             <b-input v-model="password" type="password"></b-input>
