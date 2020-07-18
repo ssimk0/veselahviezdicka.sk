@@ -22,7 +22,7 @@
           </div>
         </ValidationProvider>
         <div class="text-right">
-          <b-button size="xs" type="submit" variant="primary">
+          <b-button size="xs" type="submit" variant="primary" :disabled="disabled">
             {{ $t('pageEdit.buttons.confirm') }}
           </b-button>
         </div>
@@ -55,6 +55,7 @@ export default {
     return {
       body: '',
       title: '',
+      disabled: false,
     };
   },
   mounted() {
@@ -64,23 +65,28 @@ export default {
   methods: {
     ...mapActions(['getPage']),
     submit() {
-      pages.update({
-        id: this.page.id,
-        body: this.body,
-        title: this.title,
-      })
-        .then(() => {
-          this.$toasted.success(this.$t('pageEdit.messages.success'));
-          this.$router.push({
-            name: routes.PAGE,
-            params: {
-              type: this.$route.params.type,
-              slug: this.$route.params.slug,
-            },
+      if (!this.disabled) {
+        this.disabled = true;
+        pages.update({
+          id: this.page.id,
+          body: this.body,
+          title: this.title,
+        })
+          .then(() => {
+            this.$toasted.success(this.$t('pageEdit.messages.success'));
+            this.disabled = false;
+            this.$router.push({
+              name: routes.PAGE,
+              params: {
+                type: this.$route.params.type,
+                slug: this.$route.params.slug,
+              },
+            });
+          }, () => {
+            this.$toasted.error(this.$t('messages.error'));
+            this.disabled = false;
           });
-        }, () => {
-          this.$toasted.error(this.$t('messages.error'));
-        });
+      }
     },
   },
   computed: {

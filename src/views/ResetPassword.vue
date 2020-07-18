@@ -24,7 +24,7 @@
             </div>
           </b-form-group>
         </ValidationProvider>
-        <b-button size="xs" type="submit" variant="primary">
+        <b-button size="xs" type="submit" variant="primary" :disabled="disabled">
           {{ $t('resetPassword.buttons.confirm') }}
         </b-button>
       </form>
@@ -49,27 +49,32 @@ export default {
     return {
       password: '',
       confirm: '',
+      disabled: false,
     };
   },
   methods: {
     submit() {
-      user.resetPassword({
-        passwordConfirmation: this.confirm,
-        password: this.password,
-        token: this.$route.query.token,
-      })
-        .then(() => {
-          this.$toasted.success(this.$t('resetPassword.messages.success'));
-          this.$router.push({
-            name: routes.LOGIN,
+      if (!this.disabled) {
+        this.disabled = true;
+        user.resetPassword({
+          passwordConfirmation: this.confirm,
+          password: this.password,
+          token: this.$route.query.token,
+        })
+          .then(() => {
+            this.disabled = false;
+            this.$toasted.success(this.$t('resetPassword.messages.success'));
+            this.$router.push({
+              name: routes.LOGIN,
+            });
+          }, () => {
+            this.$toasted.error(this.$t('resetPassword.messages.expired'));
+            this.disabled = false;
+            this.$router.push({
+              name: routes.FORGOT_PASSWORD,
+            });
           });
-        }, () => {
-          this.$toasted.error(this.$t('resetPassword.messages.expired'));
-
-          this.$router.push({
-            name: routes.FORGOT_PASSWORD,
-          });
-        });
+      }
     },
   },
 };

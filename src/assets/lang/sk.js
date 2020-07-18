@@ -4,6 +4,8 @@ export default {
     required: '{_field_} je požadovaný',
     min: '{_field_} musi mať aspoň {length} znakov',
     email: '{_field_} nema správny tvar',
+    uploadType: 'Uploadovať je povolené iba obrázky',
+    uploadSize: 'Veľkosť obrázka {{ filesize }} je väčšia ako dovolena: {{ maxFilesize }}',
   },
   navigation: {
     dinningMenu: 'Jedaleň',
@@ -53,6 +55,15 @@ export default {
     labels: {
       Email: 'Email',
       Password: 'Heslo',
+    },
+  },
+  form: {
+    fields: {
+      upload: {
+        buttons: {
+          upload: '<i class=\'fas fa-cloud-upload-alt pr-2\'></i>Potiahni sem alebo klikni',
+        },
+      },
     },
   },
   messages: {

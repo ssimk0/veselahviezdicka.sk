@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Toasted from 'vue-toasted';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import VueI18n from 'vue-i18n';
 import App from './App.vue';
 import router from './router';

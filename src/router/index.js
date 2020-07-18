@@ -28,6 +28,14 @@ const routes = [
     },
   },
   {
+    path: '/gallery/:type/:category/upload',
+    name: r.UPLOAD,
+    component: () => import('@/views/gallery/Upload'),
+    beforeEnter: (to, from, next) => {
+      routeChecks.onlyEditor(next);
+    },
+  },
+  {
     path: '/login',
     name: r.LOGIN,
     component: () => import('@/views/Login.vue'),

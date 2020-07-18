@@ -2,7 +2,7 @@
   <div class="row justify-content-center align-items-center">
     <ValidationObserver v-slot="{ handleSubmit }" class="col-4 pt-5">
       <form @submit.prevent="handleSubmit(submit)">
-        <ValidationProvider v-slot="v" rules="required|min:3"
+        <ValidationProvider v-slot="v" rules="required|email"
                             :name="$t('login.labels.Email')" :debounce="300">
           <b-form-group>
             <label>{{ $t('login.labels.Email') }}</label>
@@ -23,7 +23,7 @@
           </b-form-group>
         </ValidationProvider>
         <div class="text-left">
-          <b-button size="xs" type="submit" variant="primary">
+          <b-button size="xs" type="submit" variant="primary" :disabled="disabled">
             {{ $t('login.buttons.confirm') }}
           </b-button>
           <router-link to="/forgot-password" class="text-primary ml-2">
@@ -46,6 +46,7 @@ export default {
     return {
       email: '',
       password: '',
+      disabled: false,
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -61,18 +62,23 @@ export default {
   methods: {
     ...mapActions(['login']),
     submit() {
-      this.login({
-        email: this.email,
-        password: this.password,
-      })
-        .then(() => {
-          apiSetup();
-          this.$router.push({
-            name: r.HOME,
+      if (!this.disabled) {
+        this.disabled = true;
+        this.login({
+          email: this.email,
+          password: this.password,
+        })
+          .then(() => {
+            apiSetup();
+            this.$router.push({
+              name: r.HOME,
+            });
+            this.disabled = false;
+          }, () => {
+            this.$toasted.error(this.$t('messages.error'));
+            this.disabled = false;
           });
-        }, () => {
-          this.$toasted.error(this.$t('messages.error'));
-        });
+      }
     },
   },
   computed: {

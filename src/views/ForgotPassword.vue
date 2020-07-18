@@ -11,7 +11,7 @@
             </div>
           </b-form-group>
         </ValidationProvider>
-        <b-button size="xs" type="submit" variant="primary">
+        <b-button size="xs" type="submit" variant="primary" :disabled="disabled">
           {{ $t('forgotPassword.buttons.confirm') }}
         </b-button>
       </form>
@@ -27,18 +27,24 @@ export default {
   data() {
     return {
       email: '',
+      disabled: false,
     };
   },
   methods: {
     submit() {
-      user.forgotPassword({
-        email: this.email,
-      })
-        .then(() => {
-          this.$toasted.success(this.$t('forgotPassword.messages.success'));
-        }, () => {
-          this.$toasted.error(this.$t('messages.error'));
-        });
+      if (!this.disabled) {
+        this.disabled = true;
+        user.forgotPassword({
+          email: this.email,
+        })
+          .then(() => {
+            this.disabled = false;
+            this.$toasted.success(this.$t('forgotPassword.messages.success'));
+          }, () => {
+            this.disabled = false;
+            this.$toasted.error(this.$t('messages.error'));
+          });
+      }
     },
   },
 };

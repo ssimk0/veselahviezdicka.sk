@@ -5,6 +5,7 @@
                    class="fas fa-pencil-alt float-right h3"></router-link>
     </div>
     <h3>{{ page.title }}</h3>
+    <hr/>
     <div v-html=page.body></div>
   </div>
 </template>
