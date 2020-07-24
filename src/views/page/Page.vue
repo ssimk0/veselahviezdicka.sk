@@ -1,12 +1,12 @@
 <template>
   <div class="pt-3">
-    <div v-if="user && (user.is_admin || user.can_edit)">
+    <div v-if="user && (user.is_admin || user.can_edit)" class="admin-button">
       <router-link :to="`/page/${$route.params.type}/${$route.params.slug}/edit`"
                    class="fas fa-pencil-alt float-right h3"></router-link>
     </div>
-    <h3>{{ page.title }}</h3>
+    <h3 class="title">{{ page.title }}</h3>
     <hr/>
-    <div v-html=page.body></div>
+    <div class="body" v-html=page.body></div>
   </div>
 </template>
 
