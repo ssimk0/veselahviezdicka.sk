@@ -13,8 +13,8 @@ const $route = {
   },
 };
 
-const store = new Vuex.Store({
-  state: {
+function getStore(changedState = {}) {
+  const state = {
     details: {
       menu: {
         test: {
@@ -23,31 +23,38 @@ const store = new Vuex.Store({
         },
       },
     },
-  },
-  getters: {
-    details(s) {
-      return s.details;
+    ...changedState,
+  };
+  return new Vuex.Store({
+    state,
+    getters: {
+      details(s) {
+        return s.details;
+      },
+      user(s) {
+        return s.user;
+      },
     },
-    user(s) {
-      return s.user;
-    },
-  },
-});
+  });
+}
 
-let wrapper = null;
-
-beforeEach(() => {
-  wrapper = shallowMount(Page, {
+function getMountedComponent(store, propsData) {
+  return shallowMount(Page, {
+    propsData,
     store,
     localVue,
+    stubs: ['router-link'],
     mocks: {
       $route,
     },
   });
-});
+}
 
 describe('Page.vue', () => {
   it('test if it render correctly to end user', () => {
+    const store = getStore();
+
+    const wrapper = getMountedComponent(store);
     expect(wrapper.find('.title')
       .text())
       .toMatch('menu test');
@@ -59,5 +66,56 @@ describe('Page.vue', () => {
     expect(wrapper.find('.admin-button')
       .exists())
       .toBeFalsy();
+  });
+
+  it('test if it render correctly when page changed to end user', () => {
+    const store = getStore({
+      details: {
+        menu: {
+          test: {
+            title: 'menu test new',
+            body: 'something',
+          },
+        },
+      },
+    });
+
+    const wrapper = getMountedComponent(store);
+    expect(wrapper.find('.title')
+      .text())
+      .toMatch('menu test new');
+
+    expect(wrapper.find('.body')
+      .text())
+      .toMatch('something');
+
+    expect(wrapper.find('.admin-button')
+      .exists())
+      .toBeFalsy();
+  });
+
+  it('test if it render correctly to user with admin rights', () => {
+    const store = getStore({
+      user: {
+        is_admin: true,
+      },
+    });
+
+    const wrapper = getMountedComponent(store);
+    expect(wrapper.find('.title')
+      .text())
+      .toMatch('menu test');
+
+    expect(wrapper.find('.body')
+      .text())
+      .toMatch('body');
+
+    expect(wrapper.find('.admin-button')
+      .exists())
+      .toBeTruthy();
+
+    expect(wrapper.find('.fas.fa-pencil-alt')
+      .exists())
+      .toBeTruthy();
   });
 });
