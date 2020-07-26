@@ -1,10 +1,11 @@
 import pages from '@/api/pages';
 
-const SET_PAGES = 'SET_PAGES';
-const SET_PAGE = 'SET_PAGE';
+export const SET_PAGES = 'SET_PAGES';
+export const SET_PAGE = 'SET_PAGE';
+export const CLEAR_PAGE = 'CLEAR_PAGE';
 
 const state = {
-  pages: {},
+  pages: null,
   page_details: {},
 };
 
@@ -37,21 +38,23 @@ const actions = {
 
 const mutations = {
   [SET_PAGES](s, p) {
-    return Object.assign(s, {
+    Object.assign(s, {
       pages: {
         [p.slug]: p.data,
       },
     });
   },
   [SET_PAGE](s, p) {
-    console.log(s, p);
-    return Object.assign(s, {
+    Object.assign(s, {
       page_details: {
         [p.type]: {
           [p.slug]: p.data,
         },
       },
     });
+  },
+  [CLEAR_PAGE](s, p) {
+    delete s.page_details[p.type][p.slug];
   },
 };
 

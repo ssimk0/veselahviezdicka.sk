@@ -34,6 +34,7 @@
 <script>
 import MceField from '@/components/formFields/MceField.vue';
 import { mapActions, mapGetters } from 'vuex';
+import { CLEAR_PAGE } from '@/store/pages';
 import pages from '@/api/pages';
 import routes from '@/constants/routes';
 
@@ -63,7 +64,7 @@ export default {
     this.title = this.page.title;
   },
   methods: {
-    ...mapActions(['getPage']),
+    ...mapActions(['getPage', 'getPagesByCategorySlug']),
     submit() {
       if (!this.disabled) {
         this.disabled = true;
@@ -75,12 +76,18 @@ export default {
           .then(() => {
             this.$toasted.success(this.$t('pageEdit.messages.success'));
             this.disabled = false;
-            this.$router.push({
-              name: routes.PAGE,
-              params: {
-                type: this.$route.params.type,
-                slug: this.$route.params.slug,
-              },
+            this.$store.commit(CLEAR_PAGE, {
+              type: this.$route.params.type,
+              slug: this.$route.params.slug,
+            });
+            this.getPagesByCategorySlug('menu').then(() => {
+              this.$router.push({
+                name: routes.PAGE,
+                params: {
+                  type: this.$route.params.type,
+                  slug: this.$route.params.slug,
+                },
+              });
             });
           }, () => {
             this.$toasted.error(this.$t('messages.error'));

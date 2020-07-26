@@ -23,9 +23,6 @@ export default {
     value: String,
     label: String,
   },
-  mounted() {
-    console.log(this);
-  },
   data: () => ({
     apiKey: 'l1vv22obp09u6lv98hvp8fksoyoda2mo65dtmzg1r13bodzi',
     content: '',

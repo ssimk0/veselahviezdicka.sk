@@ -2,6 +2,8 @@
   <div id="app">
     <b-container fluid="true" id="home">
       <b-container>
+        <b-toast >
+        </b-toast>
         <b-row class="text-left">
           <b-col>
             <div>
@@ -22,10 +24,15 @@
             <b-navbar-brand>{{ $t('brandName') }}</b-navbar-brand>
           </router-link>
           <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
+            <b-navbar-nav v-if="pages && pages[slug]">
               <li class="nav-item" v-for="page in pages[slug]" :key="page.id">
                 <router-link :to="`/page/menu/${page.slug}`" class="nav-link">
                   {{ page.title }}
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/gallery" class="nav-link">
+                  {{ $t('navigation.gallery') }}
                 </router-link>
               </li>
               <li class="nav-item">
@@ -49,7 +56,9 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   mounted() {
-    this.getPagesByCategorySlug(this.slug);
+    if (this.pages === null || this.pages === undefined) {
+      this.getPagesByCategorySlug(this.slug);
+    }
   },
   data() {
     return {

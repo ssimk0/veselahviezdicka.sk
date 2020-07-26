@@ -4,9 +4,11 @@
       <router-link :to="`/page/${$route.params.type}/${$route.params.slug}/edit`"
                    class="fas fa-pencil-alt float-right h3"></router-link>
     </div>
-    <h3 class="title">{{ page.title }}</h3>
-    <hr/>
-    <div class="body" v-html=page.body></div>
+    <div v-if="page">
+      <h3 class="title">{{ page.title }}</h3>
+      <hr/>
+      <div class="body" v-html=page.body></div>
+    </div>
   </div>
 </template>
 
@@ -17,13 +19,15 @@ export default {
   name: 'Page',
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      vm.getPage({
-        type: to.params.type,
-        slug: to.params.slug,
-      })
-        .then(() => {
-          next();
-        });
+      if (vm.page === null || vm.page === undefined) {
+        vm.getPage({
+          type: to.params.type,
+          slug: to.params.slug,
+        })
+          .then(() => {
+            next();
+          });
+      }
     });
   },
   methods: {
@@ -34,7 +38,7 @@ export default {
     page() {
       return this.details[this.$route.params.type]
         ? this.details[this.$route.params.type][this.$route.params.slug]
-        : {};
+        : null;
     },
   },
 };

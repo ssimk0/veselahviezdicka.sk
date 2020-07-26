@@ -17,6 +17,7 @@
 
 <script>
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+import { GALLERY_TYPE } from '@/api/uploads';
 
 export default {
   name: 'Upload',
@@ -38,7 +39,7 @@ export default {
       type: this.$route.params.type,
       disabled: false,
       dropzoneOptions: {
-        url: `/api/v1/uploads/${this.$route.params.type}/${this.$route.params.category}`,
+        url: `/api/v1/uploads/${GALLERY_TYPE}/${this.$route.params.category}`,
         thumbnailWidth: 200,
         addRemoveLinks: true,
         autoProcessQueue: false,

@@ -10,6 +10,7 @@ export default {
   navigation: {
     dinningMenu: 'Jedaleň',
     contact: 'Kontakt',
+    gallery: 'Galeria',
   },
   forgotPassword: {
     buttons: {
