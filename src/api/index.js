@@ -6,6 +6,7 @@ import { SET_INFO, SET_TOKEN } from '../store/user';
 import router from '../router';
 
 export default function setup() {
+  axios.defaults.baseURL = 'https://api.veselahviezdicka.sk';
   axios.interceptors.response.use(
     (response) => {
       NProgress.done();
