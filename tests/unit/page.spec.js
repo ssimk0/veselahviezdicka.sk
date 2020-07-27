@@ -46,6 +46,7 @@ function getMountedComponent(store, propsData) {
     stubs: ['router-link'],
     mocks: {
       $route,
+      $t: () => {},
     },
   });
 }
