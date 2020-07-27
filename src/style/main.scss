@@ -18,3 +18,9 @@ $fa-font-path:        "~@fortawesome/fontawesome-free/webfonts";
   top: 1%;
   right: 1%;
 }
+
+.admin-button {
+  a:hover {
+    text-decoration: none !important;
+  }
+}

@@ -70,4 +70,8 @@ export default {
   messages: {
     error: 'Niečo sa nepodarilo skuste to znova, alebo neskor',
   },
+  buttons: {
+    edit: 'Upraviť',
+    upload: 'Nahrať',
+  },
 };

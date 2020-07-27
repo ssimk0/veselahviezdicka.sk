@@ -2,7 +2,9 @@
   <div class="pt-3">
     <div v-if="user && (user.is_admin || user.can_edit)" class="admin-button">
       <router-link :to="`/page/${$route.params.type}/${$route.params.slug}/edit`"
-                   class="fas fa-pencil-alt float-right h3"></router-link>
+                   class="fas fa-pencil-alt float-right h4">
+        {{$t('buttons.edit')}}
+      </router-link>
     </div>
     <div v-if="page">
       <h3 class="title">{{ page.title }}</h3>
