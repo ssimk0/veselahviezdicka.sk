@@ -1,9 +1,9 @@
 import axios from 'axios';
 import NProgress from 'nprogress';
 import ROUTER_NAMES from '@/constants/routes';
-import store from '../store';
-import { SET_INFO, SET_TOKEN } from '../store/user';
-import router from '../router';
+import { SET_INFO, SET_TOKEN } from '@/store/user';
+import store from '@/store';
+import router from '@/router';
 
 export default function setup() {
   axios.defaults.baseURL = 'https://api.veselahviezdicka.sk';
@@ -52,7 +52,8 @@ export default function setup() {
     token = token || localStorage.getItem('token');
   }
 
-  if (token) {
+  if (token !== 'null' && token) {
+    console.log(token);
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     store.dispatch('userInfo');
   }

@@ -36,7 +36,6 @@ export default {
   data() {
     return {
       category: this.$route.params.category,
-      type: this.$route.params.type,
       disabled: false,
       dropzoneOptions: {
         url: `/api/v1/uploads/${GALLERY_TYPE}/${this.$route.params.category}`,

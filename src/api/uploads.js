@@ -7,4 +7,8 @@ export default {
   list(type) {
     return axios.get(`/api/v1/uploads/${type}`);
   },
+  listUploads(args) {
+    const { type, category } = args;
+    return axios.get(`/api/v1/uploads/${type}/${category}`);
+  },
 };
