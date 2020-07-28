@@ -74,4 +74,18 @@ export default {
     edit: 'Upraviť',
     upload: 'Nahrať',
   },
+  galleryCreate: {
+    pageTitle: 'Vytvoriť galeriu',
+    buttons: {
+      confirm: 'Vytvoriť',
+    },
+    labels: {
+      Name: 'Meno',
+    },
+  },
+  gallery: {
+    buttons: {
+      create: 'Vytvoriť novú',
+    },
+  },
 };

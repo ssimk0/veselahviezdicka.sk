@@ -2,6 +2,12 @@ import Vuex from 'vuex';
 import VueBoostrap from 'bootstrap-vue';
 import { createLocalVue, mount } from '@vue/test-utils';
 import Index from '@/views/gallery/Index.vue';
+import axios from 'axios';
+
+// Mock out all top level functions, such as get, put, delete and post:
+jest.mock('axios', () => ({
+  get: () => Promise.resolve(),
+}));
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -32,6 +38,9 @@ function getStore(changedState = {}) {
     getters: {
       uploadCategories(s) {
         return s.categories;
+      },
+      user() {
+        return null;
       },
     },
   });

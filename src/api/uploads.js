@@ -11,4 +11,12 @@ export default {
     const { type, category } = args;
     return axios.get(`/api/v1/uploads/${type}/${category}`);
   },
+  createCategory(args) {
+    const { name, subPath, type } = args;
+
+    return axios.post(`/api/v1/uploads/${type}`, {
+      name,
+      subPath,
+    });
+  },
 };

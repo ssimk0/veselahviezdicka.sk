@@ -2,13 +2,14 @@
   <div>
     <div v-if="user && (user.is_admin || user.can_edit)" class="row">
       <div class="col admin-button">
-      <router-link :to="`/gallery/${$route.params.slug}/upload`"
-                   class="fas fa-cloud-upload-alt float-right h4 mt-2">
-        {{$t('buttons.upload')}}
-      </router-link>
+        <router-link :to="`/gallery/${$route.params.slug}/upload`"
+                     class="fas fa-cloud-upload-alt float-right h4 mt-2">
+          {{ $t('buttons.upload') }}
+        </router-link>
       </div>
     </div>
-    <viewer v-if="imagesArray" :images="imagesArray" :options="options" class="viewer" ref="viewer">
+    <viewer v-if="imagesArray && images" :images="imagesArray" :options="options"
+            class="viewer" ref="viewer">
       <div class="row">
         <div class="col-4 mt-2 text-center" v-for="img in images.uploads" :key="img.id">
           <b-img-lazy :src="img.file" class="gal-img img-thumbnail img-fluid " :alt="img.desc"/>

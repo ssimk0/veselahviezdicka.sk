@@ -18,6 +18,8 @@
 <script>
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 import { GALLERY_TYPE } from '@/api/uploads';
+import routes from '@/constants/routes';
+import axios from 'axios';
 
 export default {
   name: 'Upload',
@@ -30,15 +32,20 @@ export default {
       this.$refs.uploader.processQueue();
     },
     uploaded() {
-      console.log(this.$refs.uploader.getAcceptedFiles());
+      this.$router.push({
+        name: routes.GALLERY_DETAIL,
+        param: {
+          slug: this.$route.params.category,
+        },
+      });
     },
   },
   data() {
     return {
-      category: this.$route.params.category,
+      category: this.$route.params.slug,
       disabled: false,
       dropzoneOptions: {
-        url: `/api/v1/uploads/${GALLERY_TYPE}/${this.$route.params.category}`,
+        url: `${axios.defaults.baseURL}/api/v1/uploads/${GALLERY_TYPE}/${this.$route.params.slug}`,
         thumbnailWidth: 200,
         addRemoveLinks: true,
         autoProcessQueue: false,

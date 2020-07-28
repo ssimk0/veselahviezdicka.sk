@@ -7,6 +7,7 @@ export default {
   PAGE_EDIT: 'pageEdit',
   UPLOAD: 'upload',
   GALLERY: 'gallery',
+  GALLERY_CREATE: 'galleryCreate',
   GALLERY_DETAIL: 'galleryDetail',
   NOT_FOUND: 'notFound',
   CONTACT: 'contact',

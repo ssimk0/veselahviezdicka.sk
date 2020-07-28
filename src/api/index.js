@@ -53,7 +53,6 @@ export default function setup() {
   }
 
   if (token !== 'null' && token) {
-    console.log(token);
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     store.dispatch('userInfo');
   }

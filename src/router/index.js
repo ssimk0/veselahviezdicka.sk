@@ -33,12 +33,17 @@ const routes = [
     component: () => import('@/views/gallery/Index'),
   },
   {
+    path: '/gallery/create',
+    name: r.GALLERY_CREATE,
+    component: () => import('@/views/gallery/Create'),
+  },
+  {
     path: '/gallery/:slug',
     name: r.GALLERY_DETAIL,
     component: () => import('@/views/gallery/Detail'),
   },
   {
-    path: '/gallery/:category/upload',
+    path: '/gallery/:slug/upload',
     name: r.UPLOAD,
     component: () => import('@/views/gallery/Upload'),
     beforeEnter: (to, from, next) => {
