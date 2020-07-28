@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     submit() {
-
       if (!this.disabled) {
         this.disabled = true;
         uploads.createCategory({
