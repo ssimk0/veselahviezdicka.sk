@@ -48,6 +48,17 @@ a {
 
 .navbar {
   .nav-link {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+.content {
+  padding-top: 150px;
+}
+$mobile-brakepoint: map-get($grid-breakpoints, "sm");
+
+@media only screen and (max-width: $mobile-brakepoint) {
+  .content {
+    padding-top: 200px;
   }
 }

@@ -66,3 +66,12 @@ $bootstrap-sass-asset-helper: true;
 
 $gray-color: #767676;
 $light-gray-color: lighten(#767676, 10);
+
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+) !default;

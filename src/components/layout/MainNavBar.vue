@@ -5,7 +5,7 @@
                 class="row pl--0 pr-0 ">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <router-link to="/">
-          <b-navbar-brand>
+          <b-navbar-brand class="d-none d-sm-block">
             <img src="../../assets/logo.svg" width="100%" height="70"
                  class="d-inline-block align-top" alt="logo"/>
           </b-navbar-brand>

@@ -42,9 +42,6 @@ export default {
 </script>
 
 <style >
-.content {
-  padding-top: 150px;
-}
 
 .background-white {
   background-color: white;
