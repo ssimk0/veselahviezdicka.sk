@@ -56,9 +56,7 @@ describe('Page.vue', () => {
     const store = getStore();
 
     const wrapper = getMountedComponent(store);
-    expect(wrapper.find('.title')
-      .text())
-      .toMatch('menu test');
+
 
     expect(wrapper.find('.body')
       .text())
@@ -82,9 +80,7 @@ describe('Page.vue', () => {
     });
 
     const wrapper = getMountedComponent(store);
-    expect(wrapper.find('.title')
-      .text())
-      .toMatch('menu test new');
+
 
     expect(wrapper.find('.body')
       .text())
@@ -103,9 +99,7 @@ describe('Page.vue', () => {
     });
 
     const wrapper = getMountedComponent(store);
-    expect(wrapper.find('.title')
-      .text())
-      .toMatch('menu test');
+
 
     expect(wrapper.find('.body')
       .text())

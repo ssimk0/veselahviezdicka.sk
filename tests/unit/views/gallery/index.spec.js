@@ -69,22 +69,22 @@ describe('gallery/Index.vue', () => {
     expect(cards.length)
       .toBe(2);
 
-    expect(wrapper.find('.col-4:nth-child(1)')
+    expect(wrapper.find('.gallery-card:nth-child(1)')
       .find('.card-text')
       .text())
       .toBe('karneval');
 
-    expect(wrapper.find('.col-4:nth-child(1)')
+    expect(wrapper.find('.gallery-card:nth-child(1)')
       .find('img')
       .attributes().src)
       .toBe('test');
 
-    expect(wrapper.find('.col-4:nth-child(2)')
+    expect(wrapper.find('.gallery-card:nth-child(2)')
       .find('.card-text')
       .text())
       .toBe('skolka');
 
-    expect(wrapper.find('.col-4:nth-child(2)')
+    expect(wrapper.find('.gallery-card:nth-child(2)')
       .find('img')
       .attributes().src)
       .toBe('thum');
