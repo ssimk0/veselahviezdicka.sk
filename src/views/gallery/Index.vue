@@ -1,15 +1,7 @@
 <template>
   <div>
-    <div v-if="user && (user.is_admin || user.can_edit)" class="row">
-      <div class="col-12 admin-button">
-        <router-link :to="`/gallery/create`"
-                     class="fas fa-plus float-right h4 mt-2">
-          {{ $t('gallery.buttons.create') }}
-        </router-link>
-      </div>
-    </div>
     <div class="row">
-      <div class="col-4" :key="category.id" v-for="category in categories">
+      <div class="col-3 col-md-4 col-sm-6" :key="category.id" v-for="category in categories">
         <router-link :to="`/gallery/${category.slug}`" class="card-link">
           <b-card
 
@@ -23,6 +15,15 @@
               {{ category.name }}
             </b-card-text>
           </b-card>
+        </router-link>
+      </div>
+    </div>
+    <div v-if="user && (user.is_admin || user.can_edit)" class="row">
+      <div class="col-12 admin-button text-right">
+        <router-link :to="`/gallery/create`"
+                     class="text-secondary btn btn-xs btn-primary h4 mt-2">
+          <i class="fas fa-plus"></i>
+          {{ $t('gallery.buttons.create') }}
         </router-link>
       </div>
     </div>

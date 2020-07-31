@@ -38,20 +38,18 @@ const actions = {
 
 const mutations = {
   [SET_PAGES](s, p) {
-    Object.assign(s, {
-      pages: {
-        [p.slug]: p.data,
-      },
-    });
+    s.pages = {
+      ...s.pages,
+      [p.slug]: p.data,
+    };
   },
   [SET_PAGE](s, p) {
-    Object.assign(s, {
-      page_details: {
-        [p.type]: {
-          [p.slug]: p.data,
-        },
+    s.page_details = {
+      ...s.page_details,
+      [p.type]: {
+        [p.slug]: p.data,
       },
-    });
+    };
   },
   [CLEAR_PAGE](s, p) {
     delete s.page_details[p.type][p.slug];

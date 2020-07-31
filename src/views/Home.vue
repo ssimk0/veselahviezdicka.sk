@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <i class="fas fa-star h1 text-warning pt-4"></i>
+    <img src="../assets/hviezda.png"/>
   </div>
 </template>
 

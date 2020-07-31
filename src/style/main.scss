@@ -25,6 +25,29 @@ $fa-font-path:        "~@fortawesome/fontawesome-free/webfonts";
   }
 }
 
+body {
+  background-color: white;
+}
+
 .font-weight-bold {
   font-weight: 800 !important;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.colorstrip{
+  width: 100%; height: 2px;
+  border-style: solid;
+  border-color: $primary;
+  background-color: $primary;
+}
+
+.navbar {
+  .nav-link {
+    font-size: 1.2rem;
+  }
 }

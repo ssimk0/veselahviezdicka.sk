@@ -1,15 +1,14 @@
 <template>
-  <div class="pt-3">
+  <div class="pt-3" v-if="page">
+    <div>
+      <div class="body" v-html=page.body></div>
+    </div>
     <div v-if="user && (user.is_admin || user.can_edit)" class="admin-button">
       <router-link :to="`/page/${$route.params.type}/${$route.params.slug}/edit`"
-                   class="fas fa-pencil-alt float-right h4">
-        {{$t('buttons.edit')}}
+                   class="text-secondary btn btn-xs btn-primary float-right h4">
+        <i class="fas fa-pencil-alt"></i>
+        {{ $t('buttons.edit') }}
       </router-link>
-    </div>
-    <div v-if="page">
-      <h3 class="title">{{ page.title }}</h3>
-      <hr/>
-      <div class="body" v-html=page.body></div>
     </div>
   </div>
 </template>
@@ -31,6 +30,22 @@ export default {
           });
       }
     });
+  },
+  beforeRouteUpdate(to, from, next) {
+    if (
+      !this.details[to.params.type]
+      || (this.details[to.params.type] && !this.details[to.params.type][to.params.slug])
+    ) {
+      this.getPage({
+        type: to.params.type,
+        slug: to.params.slug,
+      })
+        .then(() => {
+          next();
+        });
+    } else {
+      next();
+    }
   },
   methods: {
     ...mapActions(['getPage']),
