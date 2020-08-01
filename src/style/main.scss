@@ -1,5 +1,11 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+@font-face {
+  font-family: PoetsenOne;
+  src: url(./fonts/PoetsenOne.woff);
+}
+
 // Variables
 @import "variables";
 // Bootstrap
@@ -13,6 +19,8 @@ $fa-font-path:        "~@fortawesome/fontawesome-free/webfonts";
 
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/solid";
+
+
 
 .toasted-container.top-right {
   top: 1%;
@@ -70,5 +78,13 @@ $mobile-brakepoint: map-get($grid-breakpoints, "sm");
 
   .border-small-left {
     border-left: 1px solid #dee2e6 !important;
+  }
+}
+
+#home {
+  h3 {
+    color: $brand-secondary;
+    font-weight: bolder;
+    font-family: $font-family-headers;
   }
 }
