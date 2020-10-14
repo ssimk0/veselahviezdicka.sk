@@ -20,8 +20,9 @@
             Kontaktná osoba:
           </p>
           <article>Mgr. Katarína Zaujecová</article>
-          <a href="tel:+421907 339 915">0907 339 915</a> <br/>
-          <a href="mailto:veselahviezdicka@gmail.com">veselahviezdicka@gmail.com</a>
+          <a href="tel:+421907 339 915" class="text-blue">0907 339 915</a> <br/>
+          <a href="mailto:veselahviezdicka@gmail.com" class="text-blue">
+            veselahviezdicka@gmail.com</a>
         </div>
         <div class="mt-4">
           <p class="font-weight-bold">
@@ -29,9 +30,9 @@
           </p>
           <article>Občianske združenie Veselá Hviezdička</article>
           <article>Sídlo: Školská 790,951 73 Jelenec5</article>
-          <article>ICO: </article>
-          <article>DIC: </article>
-          <article>IBAN: </article>
+          <article>ICO:</article>
+          <article>DIC:</article>
+          <article>IBAN:</article>
         </div>
       </div>
     </b-col>

@@ -88,3 +88,12 @@ $mobile-brakepoint: map-get($grid-breakpoints, "sm");
     font-family: $font-family-headers;
   }
 }
+
+.text-blue {
+  color: #1c8efc;
+}
+
+a.text-blue:hover {
+  color: #1c6efc;
+}
+

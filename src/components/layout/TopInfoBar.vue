@@ -4,7 +4,8 @@
       <b-row class="text-center align-middle" id="top-menu">
         <b-col cols="6" md="1" class="border-right border-left border-small-bottom">
           <p class="pt-2 mb-2">
-            <a href="#" class="fab fa-facebook-f text-secondary"></a>
+            <a href="https://www.facebook.com/Veselé-Hviezdičky-106384077838043" target="_blank"
+               class="fab fa-facebook-f text-blue"></a>
           </p>
         </b-col>
         <b-col cols="6" md="4" class="border-right border-small-bottom">

@@ -7,6 +7,7 @@ import router from '@/router';
 
 export default function setup() {
   axios.defaults.baseURL = 'https://api.veselahviezdicka.sk';
+  // axios.defaults.baseURL = 'http://localhost:8081';
   axios.interceptors.response.use(
     (response) => {
       NProgress.done();
@@ -24,7 +25,7 @@ export default function setup() {
         store.commit(SET_INFO, {});
         router.push({
           name: ROUTER_NAMES.LOGIN,
-          query: { error: 'expired' },
+          query: {error: 'expired'},
         });
 
         return Promise.resolve({});
