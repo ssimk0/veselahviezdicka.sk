@@ -25,7 +25,7 @@ export default function setup() {
         store.commit(SET_INFO, {});
         router.push({
           name: ROUTER_NAMES.LOGIN,
-          query: {error: 'expired'},
+          query: { error: 'expired' },
         });
 
         return Promise.resolve({});
