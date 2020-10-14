@@ -29,10 +29,10 @@
             Prevádzkovateľ:
           </p>
           <article>Občianske združenie Veselá Hviezdička</article>
-          <article>Sídlo: Školská 790,951 73 Jelenec5</article>
-          <article>ICO:</article>
-          <article>DIC:</article>
-          <article>IBAN:</article>
+          <article>Sídlo: Školská 790,951 73 Jelenec</article>
+          <article>ICO: 52973905</article>
+          <article>DIC: 2121294945</article>
+          <article>IBAN: SK10 5600 0000 0065 8491 3002</article>
         </div>
       </div>
     </b-col>
