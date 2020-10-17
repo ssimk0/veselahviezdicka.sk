@@ -11,7 +11,7 @@
     <viewer v-if="imagesArray && images" :images="imagesArray" :options="options"
             class="viewer" ref="viewer">
       <div class="row">
-        <div class="col-4 mt-2 text-center" v-for="img in images.uploads" :key="img.id">
+        <div class="col-4 mt-2 text-center" v-for="img in images.upload" :key="img.id">
           <b-img-lazy :src="img.file" class="gal-img img-thumbnail img-fluid " :alt="img.desc"/>
         </div>
       </div>
