@@ -24,7 +24,7 @@
         </b-col>
         <b-col cols="6" md="3" class="border-right">
           <p class="pt-2 mb-2 ">
-            <router-link to="/page/ine/jedalen" class="text-secondary">
+            <router-link to="/menu" class="text-secondary">
               <i class="fas fa-utensils"></i>
               {{ $t('navigation.dinningMenu') }}
             </router-link>
