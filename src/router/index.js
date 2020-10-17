@@ -84,6 +84,19 @@ const routes = [
     name: r.ERROR,
     component: () => import('@/views/Error'),
   },
+  {
+    path: '/menu/upload',
+    name: r.MENU_UPLOAD,
+    component: () => import('@/views/Menu/Upload'),
+    beforeEnter: (to, from, next) => {
+      routeChecks.onlyEditor(next);
+    },
+  },
+  {
+    path: '/menu',
+    name: r.MENU,
+    component: () => import('@/views/Menu/Index'),
+  },
 ];
 
 const router = new VueRouter({

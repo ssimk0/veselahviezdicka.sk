@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const GALLERY_TYPE = 'gallery';
 export const PAGES_TYPE = 'pages';
+export const MENU_TYPE = 'menu';
 
 export default {
   list(type) {

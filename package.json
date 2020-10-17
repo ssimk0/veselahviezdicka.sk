@@ -22,6 +22,7 @@
     "viewerjs": "^1.6.1",
     "vue": "^2.6.11",
     "vue-i18n": "^8.18.2",
+    "vue-pdf-cdn": "^1.0.8",
     "vue-router": "^3.3.4",
     "vue-toasted": "^1.1.28",
     "vue2-dropzone": "^3.6.0",

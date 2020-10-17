@@ -14,6 +14,7 @@
 
 <script>
 import axios from 'axios';
+import { PAGES_TYPE } from '@/api/uploads';
 
 export default {
   name: 'MceField',
@@ -36,7 +37,7 @@ export default {
       images_upload_handler(blobInfo, success, failure) {
         const data = new FormData();
         data.append('file', blobInfo.blob(), blobInfo.filename());
-        axios.post('/api/v1/uploads/pages/media', data)
+        axios.post(`/api/v1/uploads/${PAGES_TYPE}/media`, data)
           .then((res) => {
             success(res.data.file);
           })

@@ -12,4 +12,6 @@ export default {
   NOT_FOUND: 'notFound',
   CONTACT: 'contact',
   ERROR: 'error',
+  MENU: 'menu',
+  MENU_UPLOAD: 'menu-upload',
 };

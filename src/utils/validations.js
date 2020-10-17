@@ -1,5 +1,7 @@
 import { extend } from 'vee-validate';
-import { required, email, min } from 'vee-validate/dist/rules';
+import {
+  email, ext, min, required,
+} from 'vee-validate/dist/rules';
 
 export default (i18n) => {
   extend('required', {
@@ -15,5 +17,10 @@ export default (i18n) => {
   extend('min', {
     ...min,
     message: i18n.t('validations.min'),
+  });
+
+  extend('ext', {
+    ...ext,
+    message: i18n.t('validations.ext'),
   });
 };

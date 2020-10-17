@@ -4,6 +4,7 @@ export default {
     required: '{_field_} je požadovaný',
     min: '{_field_} musi mať aspoň {length} znakov',
     email: '{_field_} nema správny tvar',
+    ext: '{_field_} nema správny format',
     uploadType: 'Uploadovať je povolené iba obrázky',
     uploadSize: 'Veľkosť obrázka {{ filesize }} je väčšia ako dovolena: {{ maxFilesize }}',
   },
@@ -73,6 +74,11 @@ export default {
   buttons: {
     edit: 'Upraviť',
     upload: 'Nahrať',
+  },
+  menuUpload: {
+    labels: {
+      File: 'Subor',
+    },
   },
   galleryCreate: {
     pageTitle: 'Vytvoriť galeriu',
