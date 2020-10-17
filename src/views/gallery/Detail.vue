@@ -75,7 +75,7 @@ export default {
     },
     imagesArray() {
       if (this.images) {
-        return this.images.uploads.map((img) => img.file);
+        return this.images.upload.map((img) => img.file);
       }
       return [];
     },
