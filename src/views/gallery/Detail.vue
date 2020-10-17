@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="gallery-detail">
     <div v-if="user && (user.is_admin || user.can_edit)" class="row">
       <div class="col admin-button">
         <router-link :to="`/gallery/${$route.params.slug}/upload`"
@@ -8,14 +8,23 @@
         </router-link>
       </div>
     </div>
-    <viewer v-if="imagesArray && images" :images="imagesArray" :options="options"
-            class="viewer" ref="viewer">
-      <div class="row">
-        <div class="col-4 mt-2 text-center" v-for="img in images.upload" :key="img.id">
-          <b-img-lazy :src="img.file" class="gal-img img-thumbnail img-fluid " :alt="img.desc"/>
-        </div>
+    <div class="row" v-if="imagesArray && imagesArray.length">
+      <div class="col-4 mt-2 text-center" @click="showImage(idx)"
+           v-for="(img, idx) in imagesArray" :key="img.id">
+        <b-img-lazy :src="img.thumbUrl"
+                    class="gal-img img-thumbnail img-fluid "
+                    :alt="img.caption"
+                    :title="img.caption"/>
       </div>
-    </viewer>
+      <ImageBox
+        v-if="imagesArray.length > 0 && index != null"
+        :images="imagesArray"
+        :index="index"
+        @close="index = null"
+        bgcolor="rgba(51, 51, 51, .9)"
+      />
+    </div>
+
   </div>
 </template>
 
@@ -30,25 +39,11 @@ export default {
     return {
       category: this.$route.params.slug,
       type: GALLERY_TYPE,
-      options: {
-        inline: false,
-        button: false,
-        navbar: false,
-        title: false,
-        toolbar: true,
-        tooltip: false,
-        movable: false,
-        zoomable: false,
-        rotatable: false,
-        scalable: false,
-        transition: true,
-        fullscreen: true,
-        keyboard: true,
-      },
+      index: null,
     };
   },
   components: {
-    Viewer: () => import('v-viewer/src/component'),
+    ImageBox: () => import('vue-image-box'),
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
@@ -65,6 +60,10 @@ export default {
   },
   methods: {
     ...mapActions(['getUploadsByCategory']),
+    showImage(idx) {
+      console.log(idx);
+      this.index = idx;
+    },
   },
   computed: {
     ...mapGetters(['uploads', 'user']),
@@ -75,7 +74,11 @@ export default {
     },
     imagesArray() {
       if (this.images) {
-        return this.images.upload.map((img) => img.file);
+        return this.images.upload.map((img) => ({
+          imageUrl: img.file,
+          thumbUrl: img.thumbnail,
+          caption: img.description,
+        }));
       }
       return [];
     },
@@ -87,4 +90,5 @@ export default {
 .gal-img {
   height: 150px;
 }
+
 </style>

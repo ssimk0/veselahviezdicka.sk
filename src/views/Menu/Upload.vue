@@ -42,9 +42,11 @@ export default {
       data.append('file', file, file.name);
       axios.post(`${axios.defaults.baseURL}/api/v1/uploads/${MENU_TYPE}/weekly`, data)
         .then(() => {
+          this.disabled = false;
           this.uploaded();
         })
         .catch((err) => {
+          this.disabled = false;
           this.error = `HTTP Error: ${err.message}`;
         });
     },

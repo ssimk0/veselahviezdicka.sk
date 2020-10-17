@@ -3,7 +3,7 @@
     <b-container fluid="true">
       <b-toast>
       </b-toast>
-      <div class="fixed-top background-white">
+      <div class="fixed-top background-white" id="top-menu">
         <top-info-bar/>
         <main-nav-bar :slug="slug"/>
       </div>

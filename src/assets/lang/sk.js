@@ -90,8 +90,13 @@ export default {
     },
   },
   gallery: {
+    labels: {
+      description: 'Popis',
+      image: 'Obrázok',
+    },
     buttons: {
       create: 'Vytvoriť novú',
+      confirm: 'Narhať',
     },
   },
 };

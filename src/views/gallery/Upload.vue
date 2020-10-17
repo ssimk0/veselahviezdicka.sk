@@ -1,13 +1,23 @@
 <template>
-  <div class="row justify-content-center align-items-center">
+  <div class="row justify-content-center align-items-center p-4">
     <ValidationObserver v-slot="{ handleSubmit }" class="col-12 pt-5">
       <form @submit.prevent="handleSubmit(submit)">
-        <vue-dropzone :options="dropzoneOptions" id="uploader"
-                      @vdropzone-queue-complete="uploaded" ref="uploader">
-        </vue-dropzone>
+        <div class="form-group">
+          <div class="w-50 mx-auto pt-4" v-if="loadedFile">
+            <img :src="loadedFile" alt="file" class="img-fluid"/>
+          </div>
+
+          <label>{{ $t('gallery.labels.image') }}</label>
+          <input type="file" name="file" ref="file" class="form-control inline"
+                 @change="updateFile"/>
+        </div>
+        <div class="form-group">
+          <label>{{ $t('gallery.labels.description') }}</label>
+          <b-input name="description" v-model="desc"/>
+        </div>
         <div class="text-right pt-4">
           <b-button size="xs" type="submit" variant="primary" :disabled="disabled">
-            {{ $t('pageEdit.buttons.confirm') }}
+            {{ $t('gallery.buttons.confirm') }}
           </b-button>
         </div>
       </form>
@@ -16,20 +26,30 @@
 </template>
 
 <script>
-import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 import { GALLERY_TYPE } from '@/api/uploads';
 import routes from '@/constants/routes';
 import axios from 'axios';
 
 export default {
   name: 'Upload',
-  components: {
-    vueDropzone: () => import('vue2-dropzone'),
-  },
   methods: {
     submit() {
       this.disabled = true;
-      this.$refs.uploader.processQueue();
+      const url = `${axios.defaults.baseURL}/api/v1/uploads/${GALLERY_TYPE}/${this.$route.params.slug}`;
+
+      const data = new FormData();
+      const file = this.$refs.file.files[0];
+      data.append('file', file, file.name);
+      data.append('description', this.desc);
+      axios.post(url, data)
+        .then(() => {
+          this.disabled = false;
+          this.uploaded();
+        })
+        .catch((err) => {
+          this.disabled = false;
+          this.error = `HTTP Error: ${err.message}`;
+        });
     },
     uploaded() {
       this.$router.push({
@@ -39,26 +59,28 @@ export default {
         },
       });
     },
+    updateFile() {
+      if (this.$refs.file.files && this.$refs.file.files.length > 0) {
+        // eslint-disable-next-line prefer-destructuring
+        this.file = this.$refs.file.files[0];
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+          this.loadedFile = e.target.result;
+        };
+
+        reader.readAsDataURL(this.file);
+      }
+    },
   },
   data() {
     return {
       category: this.$route.params.slug,
       disabled: false,
-      dropzoneOptions: {
-        url: `${axios.defaults.baseURL}/api/v1/uploads/${GALLERY_TYPE}/${this.$route.params.slug}`,
-        thumbnailWidth: 200,
-        addRemoveLinks: true,
-        autoProcessQueue: false,
-        dictDefaultMessage: this.$t('form.fields.upload.buttons.upload'),
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-        parallelUploads: 3,
-        paramName: 'file',
-        acceptedFiles: 'image/*',
-        dictFileTooBig: this.$t('validations.uploadSize'),
-        dictInvalidFileType: this.$t('validations.uploadType'),
-      },
+      file: null,
+      desc: null,
+      loadedFile: null,
     };
   },
 };

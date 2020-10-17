@@ -99,3 +99,11 @@ a.text-blue:hover {
   color: #1c6efc;
 }
 
+#top-menu {
+  z-index: 100;
+}
+
+#gallery-detail .imgBox figure figcaption {
+  background-color: transparent;
+  text-align: center;
+}

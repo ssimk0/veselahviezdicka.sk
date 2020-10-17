@@ -6,8 +6,8 @@ import store from '@/store';
 import router from '@/router';
 
 export default function setup() {
-  axios.defaults.baseURL = 'https://api.veselahviezdicka.sk';
-  // axios.defaults.baseURL = 'http://localhost:8081';
+  // axios.defaults.baseURL = 'https://api.veselahviezdicka.sk';
+  axios.defaults.baseURL = 'http://localhost:8081';
   axios.interceptors.response.use(
     (response) => {
       NProgress.done();
