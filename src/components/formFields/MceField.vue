@@ -28,12 +28,20 @@ export default {
     apiKey: 'l1vv22obp09u6lv98hvp8fksoyoda2mo65dtmzg1r13bodzi',
     content: '',
     config: {
-      // theme: 'modern',
+      content_css: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css',
       plugins:
-        'advlist autolink lists link image charmap print code preview table hr anchor pagebreak',
+        'advlist imagetools autolink lists link image charmap print code preview table hr anchor pagebreak',
       fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
       language: 'sk',
-      image_advtab: true,
+      image_advtab: false,
+      image_class_list: [
+        { title: 'Velky obrazok', value: 'img-fluid' },
+        { title: 'Stredny obrazok', value: 'img-fluid w-50 p-4' },
+        { title: 'Maly obrazok', value: 'img-fluid w-25 p-4' },
+      ],
+      image_dimensions: false,
+      a11ychecker_allow_decorative_images: false,
+      file_picker_types: 'file image media',
       images_upload_handler(blobInfo, success, failure) {
         const data = new FormData();
         data.append('file', blobInfo.blob(), blobInfo.filename());
@@ -49,7 +57,8 @@ export default {
       height: 300,
       statusbar: false,
       menubar: false,
-      toolbar: 'undo redo | fontselect  fontsizeselect forecolor | bold italic underline strikethrough hr | alignleft  aligncenter alignright alignjustify | bullist numlist blockquote outdent indent table | link image imagetools | removeformat code fullscreen',
+      a11y_advanced_options: false,
+      toolbar: 'undo redo | fontselect  fontsizeselect forecolor | bold italic underline strikethrough hr | alignleft  aligncenter alignright alignjustify | bullist numlist blockquote outdent indent table | link image | removeformat code fullscreen',
     },
   }),
   components: {
