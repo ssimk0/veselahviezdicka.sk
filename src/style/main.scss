@@ -42,7 +42,9 @@ body {
 }
 
 a {
+  color: $brand-secondary;
   &:hover {
+    color: darken($brand-secondary, 20%);
     text-decoration: none;
   }
 }
