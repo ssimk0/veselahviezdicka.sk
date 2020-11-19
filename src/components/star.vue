@@ -1,6 +1,6 @@
 <template>
   <div class="text-center row">
-    <div class="col-md-4 offset-md-4 col-6 offset-3">
+    <div class="col-md-4 offset-md-4 col-10 offset-1">
       <!-- eslint-disable -->
       <svg width="100%" height="auto" version="1.1" viewBox="0 0 179 171" xmlns="http://www.w3.org/2000/svg"
            xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
