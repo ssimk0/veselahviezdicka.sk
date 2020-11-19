@@ -6,7 +6,7 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <router-link to="/">
           <b-navbar-brand class="d-none d-sm-block">
-            <img src="../../assets/logo.svg" width="100%" height="70"
+            <img src="../../assets/logo.png" width="auto" height="70"
                  class="d-inline-block align-top" alt="logo"/>
           </b-navbar-brand>
         </router-link>

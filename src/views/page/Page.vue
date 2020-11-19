@@ -3,7 +3,8 @@
     <div>
       <div class="body" v-html=page.body></div>
     </div>
-    <div v-if="user && (user.is_admin || user.can_edit)" class="admin-button">
+    <div v-if="user && (user.is_admin || user.can_edit)"
+         class="admin-button d-flex justify-content-end">
       <router-link :to="`/page/${$route.params.type}/${$route.params.slug}/edit`"
                    class="text-secondary btn btn-xs btn-primary float-right h4">
         <i class="fas fa-pencil-alt"></i>

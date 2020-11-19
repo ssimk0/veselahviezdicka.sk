@@ -34,7 +34,7 @@ export default {
   components: {
     pdf,
   },
-  async beforeMount() {
+  async beforeCreate() {
     const pdfjs = await import('pdfjs-dist/build/pdf');
     const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.entry');
 
