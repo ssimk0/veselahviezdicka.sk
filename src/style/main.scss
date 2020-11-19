@@ -56,7 +56,14 @@ a {
 
 .navbar {
   .nav-link {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: $brand-secondary !important;
+    &:hover {
+      color: darken($brand-secondary, 20%) !important;
+    }
+    &.router-link-active {
+      color: darken($brand-secondary, 40%) !important;
+    }
   }
 }
 

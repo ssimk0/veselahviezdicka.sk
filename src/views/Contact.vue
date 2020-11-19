@@ -4,9 +4,9 @@
       <h2>Kontakt</h2>
       <hr/>
       <div>
-        <p class="font-weight-bold">
+        <h3 class="font-weight-bold">
           Jasle Veselá Hviezdička
-        </p>
+        </h3>
         <div>
           <article>
             Čínska 24
@@ -16,18 +16,18 @@
           </article>
         </div>
         <div class="mt-4">
-          <p class="font-weight-bold">
+          <h4 class="font-weight-bold">
             Kontaktná osoba:
-          </p>
+          </h4>
           <article>Mgr. Katarína Zaujecová</article>
           <a href="tel:+421907 339 915" class="text-blue">0907 339 915</a> <br/>
           <a href="mailto:veselahviezdicka@gmail.com" class="text-blue">
             veselahviezdicka@gmail.com</a>
         </div>
         <div class="mt-4">
-          <p class="font-weight-bold">
+          <h4 class="font-weight-bold">
             Prevádzkovateľ:
-          </p>
+          </h4>
           <article>Občianske združenie Veselá Hviezdička</article>
           <article>Sídlo: Školská 790,951 73 Jelenec</article>
           <article>ICO: 52973905</article>
@@ -42,6 +42,22 @@
         width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
         aria-hidden="false"
         tabindex="0"></iframe>
+    </b-col>
+    <b-col cols="12" class="pt-4">
+      <h4>Súhlas dotknutej osoby so spracovaním osobných údajov</h4>
+      <p>
+
+        V zmysle zákona Slovenskej republiky č. 18/2018 Z. z. o ochrane osobných údajov a o zmene
+        a doplnení niektorých zákonov, ktorý najmä v § 19-30 upravuje práva dotknutej osoby
+        v oblasti spracovania osobných údajov, vyjadrujem súhlas Občianskemu združeniu
+        Veselá Hviezdička so spracovaním poskytnutých osobných údajov uvedených v Dohode
+        poskytovania starostlivosti o dieťa a v priložených prílohách, za účelom administrácie
+        do uplynutia doby
+        poskytovania starostlivosti o dieťa v jasliach Veselá Hviezdička.
+        Uvedený súhlas sa týka aj použitia videozáznamov a fotografii z akcií použitých
+        na propagáciu zariadenia
+        starostlivosti pre deti do 3 rokov veku dieťaťa.
+      </p>
     </b-col>
   </div>
 </template>

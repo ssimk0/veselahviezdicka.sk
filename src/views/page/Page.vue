@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-3" v-if="page">
+  <div class="pt-3 container" v-if="page">
     <div>
       <div class="body" v-html=page.body></div>
     </div>
