@@ -1,6 +1,6 @@
 <template>
   <div id="menu">
-    <b-container>
+    <b-container :fluid="true">
       <div v-if="user && (user.is_admin || user.can_edit)" class="row">
         <div class="col-12 admin-button text-right pb-4">
           <router-link :to="`/menu/upload`"
@@ -11,14 +11,21 @@
         </div>
       </div>
       <pdf
+        class="mx-auto"
         :src="`${baseApiUrl}/api/v1/uploads/menu/weekly/latest`"
-      />
+        :scale="1.5"
+        :resize="false"
+      >
+        <template slot="loading">
+          Načitavanie ...
+        </template>
+      </pdf>
     </b-container>
   </div>
 </template>
 
 <script>
-import pdf from 'vue-pdf-cdn';
+import pdf from 'pdfvuer';
 import axios from 'axios';
 import { mapGetters } from 'vuex';
 
@@ -26,6 +33,12 @@ export default {
   name: 'Menu',
   components: {
     pdf,
+  },
+  async beforeMount() {
+    const pdfjs = await import('pdfjs-dist/build/pdf');
+    const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.entry');
+
+    pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
   },
   computed: {
     ...mapGetters(['user']),

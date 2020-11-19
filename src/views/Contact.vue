@@ -44,7 +44,7 @@
         tabindex="0"></iframe>
     </b-col>
     <b-col cols="12" class="pt-4">
-      <h4>Súhlas dotknutej osoby so spracovaním osobných údajov</h4>
+      <h3 class="font-weight-bold">Súhlas dotknutej osoby so spracovaním osobných údajov</h3>
       <p>
 
         V zmysle zákona Slovenskej republiky č. 18/2018 Z. z. o ochrane osobných údajov a o zmene
