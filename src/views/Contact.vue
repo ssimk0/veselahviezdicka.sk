@@ -1,5 +1,5 @@
 <template>
-  <div id="contact" class="row mt-3">
+  <div id="contact" class="row mt-3 container mx-auto">
     <b-col cols="12" md="6" class="text-center text-md-left">
       <h2>Kontakt</h2>
       <hr/>

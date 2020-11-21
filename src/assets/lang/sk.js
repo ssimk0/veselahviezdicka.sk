@@ -11,7 +11,7 @@ export default {
   navigation: {
     dinningMenu: 'Jedalny lístok',
     contact: 'Kontakt',
-    gallery: 'Galeria',
+    gallery: 'Fotogaleria',
   },
   forgotPassword: {
     buttons: {

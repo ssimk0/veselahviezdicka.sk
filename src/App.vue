@@ -16,7 +16,7 @@
         </div>
         <div>
           <p class="text-center align-bottom">
-           {{(new Date()).getFullYear()}} © Vesela Hviezdička
+           {{(new Date()).getFullYear()}} © Veselá Hviezdička
           </p>
         </div>
         <div>

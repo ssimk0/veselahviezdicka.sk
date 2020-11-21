@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-3 col-md-4 col-sm-6 gallery-card"
+      <div class="col-xl-3 col-md-4 col-12 col-sm-6 gallery-card"
            :key="category.id" v-for="category in categories">
         <router-link :to="`/gallery/${category.slug}`" class="card-link">
           <b-card
