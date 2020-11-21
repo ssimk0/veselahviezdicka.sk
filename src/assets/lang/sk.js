@@ -9,7 +9,7 @@ export default {
     uploadSize: 'Veľkosť obrázka {{ filesize }} je väčšia ako dovolena: {{ maxFilesize }}',
   },
   navigation: {
-    dinningMenu: 'Jedalny lístok',
+    dinningMenu: 'Jedálny lístok',
     contact: 'Kontakt',
     gallery: 'Fotogaleria',
   },
