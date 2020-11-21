@@ -34,12 +34,6 @@ export default {
   components: {
     pdf,
   },
-  async beforeCreate() {
-    const pdfjs = await import('pdfjs-dist/build/pdf');
-    const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.entry');
-
-    pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
-  },
   computed: {
     ...mapGetters(['user']),
     baseApiUrl() {

@@ -34,6 +34,14 @@ const i18n = new VueI18n({
 
 defineValidation(i18n);
 
+// eslint-disable-next-line func-names
+(async function () {
+  const pdfjs = await import('pdfjs-dist/build/pdf');
+  const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.entry');
+
+  pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+}());
+
 Vue.config.productionTip = false;
 
 new Vue({
