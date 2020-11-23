@@ -10,7 +10,11 @@ export default {
   },
   listUploads(args) {
     const { type, category } = args;
-    return axios.get(`/api/v1/uploads/${type}/${category}`);
+    return axios.get(`/api/v1/uploads/${type}/${category}`, {
+      params: {
+        s: 9999,
+      },
+    });
   },
   delete(args) {
     const { type, category, id } = args;
