@@ -11,9 +11,14 @@
     <viewer v-if="imagesArray && images" :images="imagesArray" :options="options"
             class="viewer" ref="viewer">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 text-center"
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 text-center gal-img-wrapper"
              v-for="img in images.upload" :key="img.id">
           <b-img-lazy :src="img.file" class="gal-img img-thumbnail img-fluid " :alt="img.desc"/>
+          <div class="pt-4" v-if="user && (user.is_admin || user.can_edit)" >
+            <button class="btn btn-danger" @click="() => deleteImage(img.id)">
+              {{ $t('buttons.delete') }}
+            </button>
+          </div>
         </div>
       </div>
     </viewer>
@@ -21,7 +26,7 @@
 </template>
 
 <script>
-import { GALLERY_TYPE } from '@/api/uploads';
+import uploads, { GALLERY_TYPE } from '@/api/uploads';
 import { mapActions, mapGetters } from 'vuex';
 import 'viewerjs/dist/viewer.css';
 
@@ -66,6 +71,18 @@ export default {
   },
   methods: {
     ...mapActions(['getUploadsByCategory']),
+    deleteImage(id) {
+      uploads.delete({
+        category: this.$route.params.slug,
+        type: GALLERY_TYPE,
+        id,
+      }).then(() => {
+        this.getUploadsByCategory({
+          type: GALLERY_TYPE,
+          category: this.$route.params.slug,
+        });
+      });
+    },
   },
   computed: {
     ...mapGetters(['uploads', 'user']),
@@ -87,5 +104,16 @@ export default {
 <style scoped>
 .gal-img {
   height: 150px;
+}
+
+.gal-img-wrapper {
+  position: relative;
+}
+
+.gal-img-wrapper i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: red;
 }
 </style>
