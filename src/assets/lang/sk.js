@@ -75,6 +75,7 @@ export default {
     edit: 'Upraviť',
     upload: 'Nahrať',
     delete: 'Vymazať',
+    back: 'Naspäť',
   },
   menuUpload: {
     labels: {

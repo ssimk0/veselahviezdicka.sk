@@ -8,6 +8,9 @@
         </router-link>
       </div>
     </div>
+    <div>
+      <router-link to="/gallery">{{ $t('buttons.back') }}</router-link>
+    </div>
     <viewer v-if="imagesArray && images" :images="imagesArray" :options="options"
             class="viewer" ref="viewer">
       <div class="row">
