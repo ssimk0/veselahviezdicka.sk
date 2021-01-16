@@ -7,15 +7,18 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Vesela Hviezdička</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="robots" content="follow, index">
+    <meta name="description" content="Naše priestory sú pre detičky vybavené presne tým čo potrebujú k sebarozvoju vo všetkých oblastiach.Kontaktujte nás a prídte sa k nám pozrieť, tešíme sa.">
+    <meta name="keywords"
+          content="jasle, škôlka, skolka, košice, kosice, veselahviezdicka, vesela hviezdicka, vesela, hviezda, deti">
     <script>(function () {
-      var redirect = sessionStorage.redirect;
-      if (sessionStorage && sessionStorage.redirect) {
-        delete sessionStorage.redirect;
-      }
-      if (redirect && redirect != location.href) {
-        history.replaceState(null, null, redirect);
-      }
+        var redirect = sessionStorage.redirect;
+        if (sessionStorage && sessionStorage.redirect) {
+            delete sessionStorage.redirect;
+        }
+        if (redirect && redirect != location.href) {
+            history.replaceState(null, null, redirect);
+        }
     })();</script>
 </head>
 <body>
