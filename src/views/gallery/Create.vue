@@ -45,7 +45,6 @@ export default {
         uploads.createCategory({
           name: this.name,
           type: GALLERY_TYPE,
-          description: '-',
           subPath: this.name.toLowerCase().replace(' ', '-'),
         })
           .then(() => {
