@@ -21,7 +21,9 @@ export default {
     return axios.delete(`/api/v1/uploads/${type}/${category}/${id}`);
   },
   createCategory(args) {
-    const { name, subPath, description, type } = args;
+    const {
+      name, subPath, description, type,
+    } = args;
 
     return axios.post(`/api/v1/uploads/${type}`, {
       name,

@@ -2,7 +2,6 @@ import Vuex from 'vuex';
 import VueBoostrap from 'bootstrap-vue';
 import { createLocalVue, mount } from '@vue/test-utils';
 import Index from '@/views/gallery/Index.vue';
-import axios from 'axios';
 
 // Mock out all top level functions, such as get, put, delete and post:
 jest.mock('axios', () => ({

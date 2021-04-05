@@ -3,7 +3,6 @@ import VueBoostrap from 'bootstrap-vue';
 import { createLocalVue, mount } from '@vue/test-utils';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import Create from '@/views/gallery/Create.vue';
-import axios from 'axios';
 
 // Mock out all top level functions, such as get, put, delete and post:
 jest.mock('axios');

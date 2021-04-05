@@ -57,7 +57,6 @@ describe('Page.vue', () => {
 
     const wrapper = getMountedComponent(store);
 
-
     expect(wrapper.find('.body')
       .text())
       .toMatch('body');
@@ -81,7 +80,6 @@ describe('Page.vue', () => {
 
     const wrapper = getMountedComponent(store);
 
-
     expect(wrapper.find('.body')
       .text())
       .toMatch('something');
@@ -99,7 +97,6 @@ describe('Page.vue', () => {
     });
 
     const wrapper = getMountedComponent(store);
-
 
     expect(wrapper.find('.body')
       .text())
